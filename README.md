@@ -38,7 +38,7 @@ python tools/video_inpaint.py \
 --MASK_ROOT ./demo/bear/mask_bbox.png \
 --img_size 448 896 --Propagation \
 --PRETRAINED_MODEL ./pretrained_models/refine_network.pth \
---MS --FIX_MASK --edge_guide --keyword bear
+--FIX_MASK --edge_guide --keyword bear
 ```
 You can modify the -- keyword to view other video data
 
