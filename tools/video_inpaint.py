@@ -37,7 +37,6 @@ def parse_argse():
     parser.add_argument('--img_size', type=int, nargs='+', default=None)
     parser.add_argument('--frame_dir', type=str, default='./demo/bear/frames')
     parser.add_argument('--DFC', default=True)
-    parser.add_argument('--MS', action='store_true')
     parser.add_argument('--n_threads', type=int, default=16)
     parser.add_argument('--get_mask', action='store_true')
     parser.add_argument('--output_root', type=str, default=None)
