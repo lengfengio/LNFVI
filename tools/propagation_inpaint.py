@@ -17,7 +17,7 @@ def parse_args():
                         help='if img_shape[0] is 0, keep the original solution of the video')
     parser.add_argument('--enlarge_mask', action='store_true')
     parser.add_argument('--enlarge_kernel', type=int, default=7)
-    parser.add_argument('--th_warp', type=int, default=20)
+    parser.add_argument('--warp', type=int, default=5)
     parser.add_argument('--img_root', type=str,
                         default=None)
     parser.add_argument('--mask_root', type=str,
@@ -45,7 +45,7 @@ def propagation(args,frame_inapint_model=None):
 
     # the shape list may be changed in the below, pls check it
     img_shape = args.img_shape
-    th_warp = args.th_warp
+    warp = args.warp
     video_list = os.listdir(flow_root)
     video_list.sort()
     
@@ -155,10 +155,10 @@ def propagation(args,frame_inapint_model=None):
 
             temp1 = flo.get_warp_label(flow1, flow2,
                                        results[th - 1][..., 0],
-                                       th=th_warp)
+                                       th=warp)
             temp2 = flo.get_warp_label(flow1, flow2,
                                        time_stamp[th - 1],
-                                       th=th_warp,
+                                       th=warp,
                                        value=-1)[..., 0]
 
             results[th][..., 0] = temp1
@@ -232,11 +232,11 @@ def propagation(args,frame_inapint_model=None):
 
             temp1 = flo.get_warp_label(flow1, flow2,
                                        results[th + 1][..., 1],
-                                       th=th_warp)
+                                       th=warp)
             temp2 = flo.get_warp_label(flow1, flow2, 
                                         time_stamp[th + 1],
                                         value=-1,
-                                        th=th_warp,)[..., 1]
+                                        th=warp,)[..., 1]
 
             results[th][..., 1] = temp1
             time_stamp[th][..., 1] = temp2
