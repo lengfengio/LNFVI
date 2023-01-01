@@ -61,7 +61,7 @@ def parse_argse():
     parser.add_argument('--Propagation', action='store_true')
     parser.add_argument('--MASK_MODE', type=str, default=None)
     parser.add_argument('--img_shape', type=int, nargs='+', default=[480, 840])
-    parser.add_argument('--th_warp', type=int, default=40)
+    parser.add_argument('--warp', type=int, default=5)
     parser.add_argument('--lambda1', type=float, default=0.9)
     parser.add_argument('--lambda2', type=float, default=0.1)
     parser.add_argument('--mask_root', type=str,default=None)
