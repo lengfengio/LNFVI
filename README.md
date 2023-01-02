@@ -27,7 +27,7 @@ bash install_scripts.sh
 
 ## Quick start
 
-1. Download [pretrained_models]([http://blog.csdn.net/zhaokaiqiang1992](https://drive.google.com/file/d/1Z_crQmx4lL4ayroUiaHOnBojj-30MZBO/view?usp=share_link))    
+1. Download [pretrained_models](https://drive.google.com/file/d/1Z_crQmx4lL4ayroUiaHOnBojj-30MZBO/view?usp=share_link)
 2. Unzip the downloaded file and place it in the root directory of this project
 3. Run Demo
 
