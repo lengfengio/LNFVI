@@ -296,12 +296,9 @@ def writeFlow(filename,uv,v=None):
     tmp.astype(np.float32).tofile(f)
     f.close()
 def create_dir(dir):
-    """Creates a directory if not exist.
-    """
     if not os.path.exists(dir):
         os.makedirs(dir)
 def readFlow(fn):
-    """ Read .flo file in Middlebury format"""
     # print 'fn = %s'%(fn)
     with open(fn, 'rb') as f:
         magic = np.fromfile(f, np.float32, count=1)
@@ -323,18 +320,6 @@ def to_tensor(img):
 
 
 def make_colorwheel():
-    """
-    Generates a color wheel for optical flow visualization as presented in:
-        Baker et al. "A Database and Evaluation Methodology for Optical Flow" (ICCV, 2007)
-        URL: http://vision.middlebury.edu/flow/flowEval-iccv07.pdf
-
-    Code follows the original C++ source code of Daniel Scharstein.
-    Code follows the the Matlab source code of Deqing Sun.
-
-    Returns:
-        np.ndarray: Color wheel
-    """
-
     RY = 15
     YG = 6
     GC = 4
@@ -371,10 +356,6 @@ def make_colorwheel():
     colorwheel[col:col+MR, 0] = 255
     return colorwheel
 def gradient_mask(mask):
-    
-    # np.logical_or对每个元素进行 or 运算，返回 bool 值组成的数组
-    # print(mask[1:, :].shape)  (511, 960)
-    # print(list(np.zeros((1, mask.shape[1])).shape))  # [1,960]
     gradient_mask = np.logical_or.reduce((mask,
         np.concatenate((mask[1:, :], np.zeros((1, mask.shape[1]), dtype=np.bool_)), axis=0),
         np.concatenate((mask[:, 1:], np.zeros((mask.shape[0], 1), dtype=np.bool_)), axis=1)))
@@ -421,17 +402,6 @@ def flow_uv_to_colors(u, v, convert_to_bgr=False):
 
 
 def flow_to_image(flow_uv, clip_flow=None, convert_to_bgr=False):
-    """
-    Expects a two dimensional flow image of shape.
-
-    Args:
-        flow_uv (np.ndarray): Flow UV image of shape [H,W,2]
-        clip_flow (float, optional): Clip maximum of flow values. Defaults to None.
-        convert_to_bgr (bool, optional): Convert output image to BGR. Defaults to False.
-
-    Returns:
-        np.ndarray: Flow visualization image of shape [H,W,3]
-    """
     assert flow_uv.ndim == 3, 'input flow must have three dimensions'
     assert flow_uv.shape[2] == 2, 'input flow must have shape [H,W,2]'
     if clip_flow is not None:
@@ -446,9 +416,7 @@ def flow_to_image(flow_uv, clip_flow=None, convert_to_bgr=False):
     return flow_uv_to_colors(u, v, convert_to_bgr)
 
 def main():
-
     args = parse_argse()
-
     if args.frame_dir is not None:
         args.dataset_root = os.path.dirname(args.frame_dir)
     if args.FlowNet2:
