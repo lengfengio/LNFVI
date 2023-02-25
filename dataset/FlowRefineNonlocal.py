@@ -16,7 +16,7 @@ class FlowSeq(data.Dataset):
         self.size = self.config.IMAGE_SHAPE
         self.res_size = self.config.RES_SHAPE
         self.isTest = isTest
-        self.data_list = config.EVAL_LIST_Nonlocal if isTest else config.TRAIN_LIST
+        self.data_list = config.EVAL_LIST_Nonlocal if isTest else config.TRAIN_Nonlocal_LIST
         with open(self.data_list, 'r') as f:
             for line in f:
                 line = line.strip()
