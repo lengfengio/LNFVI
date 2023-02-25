@@ -57,6 +57,8 @@ def parse_argse():
     parser.add_argument('--GT_FLOW_ROOT', type=str,default=None)
     parser.add_argument('--PRETRAINED_MODEL', type=str, default=None)
     parser.add_argument('--INITIAL_HOLE', action='store_true')
+    parser.add_argument('--EVAL_LIST', type=str,default=None)
+    parser.add_argument('--EVAL_LIST_Nonlocal', type=str,default=None)
     parser.add_argument('--Propagation', action='store_true')
     parser.add_argument('--MASK_MODE', type=str, default=None)
     parser.add_argument('--img_shape', type=int, nargs='+', default=[480, 840])
