@@ -39,7 +39,7 @@ def propagation(args,frame_inapint_model=None):
     # Setup dataset
     img_root = args.img_root
     mask_root = args.mask_root
-    flow_root = '../demo/'+args.keyword+'/Flow_res/flow_result/'
+    flow_root = './demo/'+args.keyword+'/Flow_res/flow_result/'
     output_root = args.output_root_propagation
 
 
